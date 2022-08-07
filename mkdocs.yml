@@ -3,8 +3,8 @@ site_url: https://klipperscreen.readthedocs.io
 site_description: >-
   KlipperScreen documentation.
 
-repo_name: jordanruthe/KlipperScreen/
-repo_url: https://github.com/jordanruthe/KlipperScreen/
+repo_name: MakerPi-3D-Firmware/KlipperScreen/
+repo_url: https://github.com/MakerPi-3D-Firmware/KlipperScreen/
 nav:
     - Home: index.md
     - Bed Level/Screws: Screws.md
@@ -53,7 +53,7 @@ markdown_extensions:
 extra:
     social:
       - icon: fontawesome/brands/github
-        link: https://github.com/jordanruthe/klipperScreen/
+        link: https://github.com/MakerPi-3D-Firmware/klipperScreen/
       - icon: fontawesome/brands/discord
         link: https://discord.klipper3d.org/
       - icon: fontawesome/brands/python
