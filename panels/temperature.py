@@ -39,6 +39,8 @@ class TemperaturePanel(ScreenPanel):
         selection = []
         if "extruder" in self._printer.get_tools():
             selection.append("extruder")
+        if "extruder1" in self._printer.get_tools():
+            selection.append("extruder1")
         if state not in ["printing", "paused"]:
             self.show_preheat = True
             selection.extend(self._printer.get_heaters())
@@ -128,7 +130,7 @@ class TemperaturePanel(ScreenPanel):
         self.labels[f"deg{self.tempdelta}"].set_active(True)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        vbox.pack_start(Gtk.Label(_("Temperature") + " (°C)"), False, False, 8)
+        vbox.pack_start(Gtk.Label(_("Temperature") + " (掳C)"), False, False, 8)
         vbox.pack_end(tempgrid, True, True, 2)
 
         vsize = 2 if self._screen.vertical_mode else 3
@@ -377,7 +379,7 @@ class TemperaturePanel(ScreenPanel):
         self.labels['devices'].set_vexpand(False)
 
         name = Gtk.Label("")
-        temp = Gtk.Label(_("Temp (°C)"))
+        temp = Gtk.Label(_("Temp (掳C)"))
         temp.set_size_request(round(self._gtk.get_font_size() * 7.7), -1)
 
         self.labels['devices'].attach(name, 0, 0, 1, 1)
