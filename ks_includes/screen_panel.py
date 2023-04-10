@@ -71,6 +71,12 @@ class ScreenPanel:
     def homexy(self, widget):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_XY)
 
+    def choice_T0(self, widget):
+        self._screen._ws.klippy.gcode_script(KlippyGcodes.CHOICE_T0)
+
+    def choice_T1(self, widget):
+        self._screen._ws.klippy.gcode_script(KlippyGcodes.CHOICE_T1)
+
     def z_tilt(self, widget):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.Z_TILT)
 

@@ -13,7 +13,7 @@ button {
 }
 
 button label{
-    color: black;
+    color: blue;
 }
 
 button:active {
@@ -29,7 +29,7 @@ button:active {
     border-radius: 1em;
 }
 
-button.color1 label, button.color2 label, button.color3 label, button.color4 label {
+button.color1 label, button.color2 label, button.color3 label, button.color4 label, button.color5 label {
     color: black;
 }
 
@@ -61,7 +61,14 @@ button.color4 {
     border-radius: 1em;
 }
 
-button.color1:active, button.color2:active, button.color3:active, button.color4:active, button.update:active, button.invalid:active, .dialog button:active {
+button.color5 {
+    background-color: #2bc064;
+    border-color: #2bc064;
+    box-shadow: .1em .1em #BDBDBD;
+    border-radius: 1em;
+}
+
+button.color1:active, button.color2:active, button.color3:active, button.color4:active, button.color5:active, button.update:active, button.invalid:active, .dialog button:active {
     border-style: none;
 }
 

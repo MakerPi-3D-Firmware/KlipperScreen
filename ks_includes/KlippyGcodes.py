@@ -7,6 +7,9 @@ class KlippyGcodes:
     Z_TILT = "Z_TILT_ADJUST"
     QUAD_GANTRY_LEVEL = "QUAD_GANTRY_LEVEL"
 
+    CHOICE_T0 = "T0"
+    CHOICE_T1 = "T1"
+
     MOVE = "G1"
     MOVE_ABSOLUTE = "G90"
     MOVE_RELATIVE = "G91"

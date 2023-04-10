@@ -43,6 +43,11 @@ class MovePanel(ScreenPanel):
         self.labels['z-'] = self._gtk.ButtonImage("z-closer", _("Z-"), "color3")
         self.labels['z-'].connect("clicked", self.move, AXIS_Z, "-")
 
+        self.labels['t0'] = self._gtk.ButtonImage("extruder-0", _("T0"), "color5")
+        self.labels['t0'].connect("clicked", self.choice_T0)
+        self.labels['t1'] = self._gtk.ButtonImage("extruder-1", _("T1"), "color5")
+        self.labels['t1'].connect("clicked", self.choice_T1)
+
         self.labels['home'] = self._gtk.ButtonImage("home", _("Home All"), "color4")
         self.labels['home'].connect("clicked", self.home)
 
@@ -74,6 +79,8 @@ class MovePanel(ScreenPanel):
                 grid.attach(self.labels['z-'], 2, 2, 1, 1)
             grid.attach(self.labels['y+'], 1, 0, 1, 1)
             grid.attach(self.labels['y-'], 1, 1, 1, 1)
+            grid.attach(self.labels['t0'], 3, 0, 1, 1)
+            grid.attach(self.labels['t1'], 3, 1, 1, 1)
 
         else:
             if self._screen.lang_ltr:
@@ -86,6 +93,8 @@ class MovePanel(ScreenPanel):
             grid.attach(self.labels['y-'], 1, 1, 1, 1)
             grid.attach(self.labels['z+'], 3, 0, 1, 1)
             grid.attach(self.labels['z-'], 3, 1, 1, 1)
+            grid.attach(self.labels['t0'], 4, 0, 1, 1)
+            grid.attach(self.labels['t1'], 4, 1, 1, 1)
 
         grid.attach(self.labels['home'], 0, 0, 1, 1)
 
