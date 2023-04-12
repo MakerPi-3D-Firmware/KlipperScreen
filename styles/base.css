@@ -54,6 +54,12 @@ button.color4 {
     min-height: 3em;
 }
 
+button.color5 {
+    border-bottom: .4em solid #719674;
+    margin: .3em;
+    min-height: 3em;
+}
+
 button.status {
     background-color: #13181C;
 }

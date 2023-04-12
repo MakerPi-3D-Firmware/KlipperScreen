@@ -71,6 +71,16 @@ class FineTunePanel(ScreenPanel):
         grid = self._gtk.HomogeneousGrid()
         grid.set_row_homogeneous(False)
         if self._screen.vertical_mode:
+            self.labels['x+'] = self._gtk.ButtonImage("arrow-right", _("X+"), "color2")
+            self.labels['x-'] = self._gtk.ButtonImage("arrow-left", _("X-"), "color2")
+            self.labels['xoffset'] = self._gtk.ButtonImage("refresh", "  0.00" + _("mm"),
+                                                           "color2", .6, Gtk.PositionType.LEFT, False)
+
+            self.labels['y+'] = self._gtk.ButtonImage("arrow-up", _("Y+"), "color5")
+            self.labels['y-'] = self._gtk.ButtonImage("arrow-down", _("Y-"), "color5")
+            self.labels['yoffset'] = self._gtk.ButtonImage("refresh", "  0.00" + _("mm"),
+                                                           "color5", .6, Gtk.PositionType.LEFT, False)
+
             self.labels['z+'] = self._gtk.ButtonImage("z-farther", _("Z+"), "color1")
             self.labels['z-'] = self._gtk.ButtonImage("z-closer", _("Z-"), "color1")
             self.labels['zoffset'] = self._gtk.ButtonImage("refresh", "  0.00" + _("mm"),
@@ -89,17 +99,35 @@ class FineTunePanel(ScreenPanel):
             grid.attach(self.labels['z+'], 0, 0, 1, 1)
             grid.attach(self.labels['z-'], 1, 0, 1, 1)
             grid.attach(self.labels['zoffset'], 2, 0, 1, 1)
-            grid.attach(bsgrid, 0, 1, 3, 1)
 
-            grid.attach(self.labels['speed-'], 0, 2, 1, 1)
-            grid.attach(self.labels['speed+'], 1, 2, 1, 1)
-            grid.attach(self.labels['speedfactor'], 2, 2, 1, 1)
+            grid.attach(self.labels['x+'], 0, 1, 1, 1)
+            grid.attach(self.labels['x-'], 1, 1, 1, 1)
+            grid.attach(self.labels['xoffset'], 2, 1, 1, 1)
 
-            grid.attach(self.labels['extrude-'], 0, 3, 1, 1)
-            grid.attach(self.labels['extrude+'], 1, 3, 1, 1)
-            grid.attach(self.labels['extrudefactor'], 2, 3, 1, 1)
-            grid.attach(deltgrid, 0, 4, 3, 1)
+            grid.attach(self.labels['y+'], 0, 2, 1, 1)
+            grid.attach(self.labels['y-'], 1, 2, 1, 1)
+            grid.attach(self.labels['yoffset'], 2, 2, 1, 1)
+            grid.attach(bsgrid, 0, 3, 3, 1)
+
+            grid.attach(self.labels['speed-'], 0, 4, 1, 1)
+            grid.attach(self.labels['speed+'], 1, 4, 1, 1)
+            grid.attach(self.labels['speedfactor'], 2, 4, 1, 1)
+
+            grid.attach(self.labels['extrude-'], 0, 5, 1, 1)
+            grid.attach(self.labels['extrude+'], 1, 5, 1, 1)
+            grid.attach(self.labels['extrudefactor'], 2, 5, 1, 1)
+            grid.attach(deltgrid, 0, 6, 3, 1)
         else:
+            self.labels['x+'] = self._gtk.ButtonImage("arrow-right", _("X+"), "color2")
+            self.labels['xoffset'] = self._gtk.ButtonImage("refresh", "  0.00" + _("mm"),
+                                                           "color2", .6, Gtk.PositionType.LEFT, False)
+            self.labels['x-'] = self._gtk.ButtonImage("arrow-left", _("X-"), "color2")
+
+            self.labels['y+'] = self._gtk.ButtonImage("arrow-up", _("Y+"), "color5")
+            self.labels['yoffset'] = self._gtk.ButtonImage("refresh", "  0.00" + _("mm"),
+                                                           "color5", .6, Gtk.PositionType.LEFT, False)
+            self.labels['y-'] = self._gtk.ButtonImage("arrow-down", _("Y-"), "color5")
+
             self.labels['z+'] = self._gtk.ButtonImage("z-farther", _("Z+"), "color1")
             self.labels['zoffset'] = self._gtk.ButtonImage("refresh", "  0.00" + _("mm"),
                                                            "color1", .6, Gtk.PositionType.LEFT, False)
@@ -114,24 +142,45 @@ class FineTunePanel(ScreenPanel):
             self.labels['extrudefactor'] = self._gtk.ButtonImage("refresh", "  100%",
                                                                  "color4", .6, Gtk.PositionType.LEFT, False)
             self.labels['extrude-'] = self._gtk.ButtonImage("flow-", _("Extrusion -"), "color4")
-            grid.attach(self.labels['zoffset'], 0, 0, 1, 1)
-            grid.attach(self.labels['z+'], 0, 1, 1, 1)
-            grid.attach(self.labels['z-'], 0, 2, 1, 1)
-            grid.attach(bsgrid, 0, 3, 1, 1)
-            grid.attach(self.labels['speedfactor'], 1, 0, 1, 1)
-            grid.attach(self.labels['speed+'], 1, 1, 1, 1)
-            grid.attach(self.labels['speed-'], 1, 2, 1, 1)
-            grid.attach(self.labels['extrudefactor'], 2, 0, 1, 1)
-            grid.attach(self.labels['extrude+'], 2, 1, 1, 1)
-            grid.attach(self.labels['extrude-'], 2, 2, 1, 1)
-            grid.attach(deltgrid, 1, 3, 2, 1)
 
-        self.labels['z+'].connect("clicked", self.change_babystepping, "+")
-        self.labels['zoffset'].connect("clicked", self.change_babystepping, "reset")
-        self.labels['z-'].connect("clicked", self.change_babystepping, "-")
+            grid.attach(self.labels['xoffset'], 0, 0, 1, 1)
+            grid.attach(self.labels['x+'], 0, 1, 1, 1)
+            grid.attach(self.labels['x-'], 0, 2, 1, 1)
+
+            grid.attach(self.labels['yoffset'], 1, 0, 1, 1)
+            grid.attach(self.labels['y+'], 1, 1, 1, 1)
+            grid.attach(self.labels['y-'], 1, 2, 1, 1)
+
+            grid.attach(self.labels['zoffset'], 2, 0, 1, 1)
+            grid.attach(self.labels['z+'], 2, 1, 1, 1)
+            grid.attach(self.labels['z-'], 2, 2, 1, 1)
+            grid.attach(bsgrid, 0, 3, 3, 1)
+
+            grid.attach(self.labels['speedfactor'], 3, 0, 1, 1)
+            grid.attach(self.labels['speed+'], 3, 1, 1, 1)
+            grid.attach(self.labels['speed-'], 3, 2, 1, 1)
+
+            grid.attach(self.labels['extrudefactor'], 4, 0, 1, 1)
+            grid.attach(self.labels['extrude+'], 4, 1, 1, 1)
+            grid.attach(self.labels['extrude-'], 4, 2, 1, 1)
+            grid.attach(deltgrid, 3, 3, 2, 1)
+
+        self.labels['x+'].connect("clicked", self.change_babystepping_x, "+")
+        self.labels['xoffset'].connect("clicked", self.change_babystepping_x, "reset")
+        self.labels['x-'].connect("clicked", self.change_babystepping_x, "-")
+
+        self.labels['y+'].connect("clicked", self.change_babystepping_y, "+")
+        self.labels['yoffset'].connect("clicked", self.change_babystepping_y, "reset")
+        self.labels['y-'].connect("clicked", self.change_babystepping_y, "-")
+
+        self.labels['z+'].connect("clicked", self.change_babystepping_z, "+")
+        self.labels['zoffset'].connect("clicked", self.change_babystepping_z, "reset")
+        self.labels['z-'].connect("clicked", self.change_babystepping_z, "-")
+
         self.labels['speed+'].connect("clicked", self.change_speed, "+")
         self.labels['speedfactor'].connect("clicked", self.change_speed, "reset")
         self.labels['speed-'].connect("clicked", self.change_speed, "-")
+        
         self.labels['extrude+'].connect("clicked", self.change_extrusion, "+")
         self.labels['extrudefactor'].connect("clicked", self.change_extrusion, "reset")
         self.labels['extrude-'].connect("clicked", self.change_extrusion, "-")
@@ -146,6 +195,10 @@ class FineTunePanel(ScreenPanel):
         if "gcode_move" in data:
             if "homing_origin" in data["gcode_move"]:
                 self.labels['zoffset'].set_label(f'  {data["gcode_move"]["homing_origin"][2]:.2f}mm')
+            if "homing_origin" in data["gcode_move"]:
+                self.labels['xoffset'].set_label(f'  {data["gcode_move"]["homing_origin"][0]:.2f}mm')
+            if "homing_origin" in data["gcode_move"]:
+                self.labels['yoffset'].set_label(f'  {data["gcode_move"]["homing_origin"][1]:.2f}mm')
             if "extrude_factor" in data["gcode_move"]:
                 self.extrusion = int(round(data["gcode_move"]["extrude_factor"] * 100))
                 self.labels['extrudefactor'].set_label(f"  {self.extrusion:3}%")
@@ -153,7 +206,19 @@ class FineTunePanel(ScreenPanel):
                 self.speed = int(round(data["gcode_move"]["speed_factor"] * 100))
                 self.labels['speedfactor'].set_label(f"  {self.speed:3}%")
 
-    def change_babystepping(self, widget, direction):
+    def change_babystepping_x(self, widget, direction):
+        if direction == "reset":
+            self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET X=0 MOVE=1")
+        elif direction in ["+", "-"]:
+            self._screen._ws.klippy.gcode_script(f"SET_GCODE_OFFSET X_ADJUST={direction}{self.bs_delta} MOVE=1")
+
+    def change_babystepping_y(self, widget, direction):
+        if direction == "reset":
+            self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Y=0 MOVE=1")
+        elif direction in ["+", "-"]:
+            self._screen._ws.klippy.gcode_script(f"SET_GCODE_OFFSET Y_ADJUST={direction}{self.bs_delta} MOVE=1")
+
+    def change_babystepping_z(self, widget, direction):
         if direction == "reset":
             self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Z=0 MOVE=1")
         elif direction in ["+", "-"]:
