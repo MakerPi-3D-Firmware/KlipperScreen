@@ -208,21 +208,21 @@ class FineTunePanel(ScreenPanel):
 
     def change_babystepping_x(self, widget, direction):
         if direction == "reset":
-            self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET X=0 MOVE=1")
+            self._screen._ws.klippy.gcode_script("SET_GCODE_E1OFFSET X=0 MOVE=1")
         elif direction in ["+", "-"]:
-            self._screen._ws.klippy.gcode_script(f"SET_GCODE_OFFSET X_ADJUST={direction}{self.bs_delta} MOVE=1")
+            self._screen._ws.klippy.gcode_script(f"SET_GCODE_E1OFFSET X_ADJUST={direction}{self.bs_delta} MOVE=1")
 
     def change_babystepping_y(self, widget, direction):
         if direction == "reset":
-            self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Y=0 MOVE=1")
+            self._screen._ws.klippy.gcode_script("SET_GCODE_E1OFFSET Y=0 MOVE=1")
         elif direction in ["+", "-"]:
-            self._screen._ws.klippy.gcode_script(f"SET_GCODE_OFFSET Y_ADJUST={direction}{self.bs_delta} MOVE=1")
+            self._screen._ws.klippy.gcode_script(f"SET_GCODE_E1OFFSET Y_ADJUST={direction}{self.bs_delta} MOVE=1")
 
     def change_babystepping_z(self, widget, direction):
         if direction == "reset":
-            self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Z=0 MOVE=1")
+            self._screen._ws.klippy.gcode_script("SET_GCODE_E1OFFSET Z=0 MOVE=1")
         elif direction in ["+", "-"]:
-            self._screen._ws.klippy.gcode_script(f"SET_GCODE_OFFSET Z_ADJUST={direction}{self.bs_delta} MOVE=1")
+            self._screen._ws.klippy.gcode_script(f"SET_GCODE_E1OFFSET Z_ADJUST={direction}{self.bs_delta} MOVE=1")
 
     def change_bs_delta(self, widget, bs):
         if self.bs_delta == bs:

@@ -434,7 +434,7 @@ class JobStatusPanel(ScreenPanel):
     def save_confirm(self, widget, response_id, device):
         if response_id == Gtk.ResponseType.APPLY:
             if device == "probe":
-                self._screen._ws.klippy.gcode_script("Z_OFFSET_APPLY_PROBE")
+                self._screen._ws.klippy.gcode_script("E1_OFFSET_APPLY_PROBE")
             if device == "endstop":
                 self._screen._ws.klippy.gcode_script("Z_OFFSET_APPLY_ENDSTOP")
             self._screen._ws.klippy.gcode_script("SAVE_CONFIG")
