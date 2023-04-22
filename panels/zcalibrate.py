@@ -145,6 +145,8 @@ class ZCalibratePanel(ScreenPanel):
         if self._screen.printer.get_stat("toolhead", "homed_axes") != "xyz":
             self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME)
 
+        self._screen._ws.klippy.gcode_script(KlippyGcodes.SECURE_LOCATION)
+
         if method == "probe":
             self._move_to_position()
             self._screen._ws.klippy.gcode_script(KlippyGcodes.PROBE_CALIBRATE)

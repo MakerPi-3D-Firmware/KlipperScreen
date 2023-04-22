@@ -9,6 +9,7 @@ class KlippyGcodes:
 
     CHOICE_T0 = "T0"
     CHOICE_T1 = "T1"
+    SECURE_LOCATION = "G0 X0 Y0 Z10 F1000"
 
     MOVE = "G1"
     MOVE_ABSOLUTE = "G90"

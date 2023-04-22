@@ -67,6 +67,7 @@ class ScreenPanel:
 
     def home(self, widget):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME)
+        self._screen._ws.klippy.gcode_script(KlippyGcodes.SECURE_LOCATION)
 
     def homexy(self, widget):
         self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME_XY)
