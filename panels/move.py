@@ -219,6 +219,10 @@ class MovePanel(ScreenPanel):
             self.labels[f"{i}"].set_active(False)
 
     def move(self, widget, axis, direction):
+        home_data = self._printer.get_data()
+        if home_data['gcode_move']['gcode_position'][2] < 10:
+            self._screen._ws.klippy.gcode_script(KlippyGcodes.HOME)
+            self._screen._ws.klippy.gcode_script(KlippyGcodes.SECURE_LOCATION)
         speed = None
         if self._config.get_config()['main'].getboolean(f"invert_{axis.lower()}", False):
             direction = "-" if direction == "+" else "+"
