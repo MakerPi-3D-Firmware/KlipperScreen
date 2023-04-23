@@ -22,6 +22,7 @@ class ScreenPanel:
         self.title = title
         self.devices = {}
         self.active_heaters = []
+        self.Fine_tuning_mark = False
 
         self.layout = Gtk.Layout()
         self.layout.set_size(self._screen.width, self._screen.height)
@@ -34,6 +35,12 @@ class ScreenPanel:
     def initialize(self, panel_name):
         # Create gtk items here
         return
+
+    def get_fine_tuning(self):
+        return self.Fine_tuning_mark
+
+    def set_fine_tuning(self, title):
+        self.Fine_tuning_mark = title
 
     def emergency_stop(self, widget):
 

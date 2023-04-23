@@ -207,18 +207,21 @@ class FineTunePanel(ScreenPanel):
                 self.labels['speedfactor'].set_label(f"  {self.speed:3}%")
 
     def change_babystepping_x(self, widget, direction):
+        self.set_fine_tuning(True)
         if direction == "reset":
             self._screen._ws.klippy.gcode_script("SET_GCODE_EOFFSET X=0 MOVE=1")
         elif direction in ["+", "-"]:
             self._screen._ws.klippy.gcode_script(f"SET_GCODE_EOFFSET X_ADJUST={direction}{self.bs_delta} MOVE=1")
 
     def change_babystepping_y(self, widget, direction):
+        self.set_fine_tuning(True)
         if direction == "reset":
             self._screen._ws.klippy.gcode_script("SET_GCODE_EOFFSET Y=0 MOVE=1")
         elif direction in ["+", "-"]:
             self._screen._ws.klippy.gcode_script(f"SET_GCODE_EOFFSET Y_ADJUST={direction}{self.bs_delta} MOVE=1")
 
     def change_babystepping_z(self, widget, direction):
+        self.set_fine_tuning(True)
         if direction == "reset":
             self._screen._ws.klippy.gcode_script("SET_GCODE_OFFSET Z=0 MOVE=1")
         elif direction in ["+", "-"]:

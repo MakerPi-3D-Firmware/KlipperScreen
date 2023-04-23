@@ -386,7 +386,7 @@ class JobStatusPanel(ScreenPanel):
             'pause': self._gtk.ButtonImage("pause", _("Pause"), "color1"),
             'restart': self._gtk.ButtonImage("refresh", _("Restart"), "color3"),
             'resume': self._gtk.ButtonImage("resume", _("Resume"), "color1"),
-            'save_offset_probe': self._gtk.ButtonImage("home-z", _("Save Z") + "\n" + "Probe", "color1"),
+            'save_offset_probe': self._gtk.ButtonImage("home-z", _("Save To") + "\n" + "Probe", "color1"),
             'save_offset_endstop': self._gtk.ButtonImage("home-z", _("Save Z") + "\n" + "Endstop", "color2"),
         }
         self.buttons['cancel'].connect("clicked", self.cancel)
@@ -784,6 +784,7 @@ class JobStatusPanel(ScreenPanel):
     def show_buttons_for_state(self):
         self.buttons['button_grid'].remove_row(0)
         self.buttons['button_grid'].insert_row(0)
+        fine_tuning = self.get_fine_tuning()
         if self.state == "printing":
             self.buttons['button_grid'].attach(self.buttons['pause'], 0, 0, 1, 1)
             self.buttons['button_grid'].attach(self.buttons['cancel'], 1, 0, 1, 1)
@@ -797,7 +798,7 @@ class JobStatusPanel(ScreenPanel):
             self.buttons['button_grid'].attach(self.buttons['control'], 3, 0, 1, 1)
             self.enable_button("resume", "cancel")
         else:
-            if self.zoffset != 0:
+            if fine_tuning != False:
                 endstop = (self._screen.printer.config_section_exists("stepper_z") and
                            not self._screen.printer.get_config_section("stepper_z")['endstop_pin'].startswith("probe"))
                 if endstop:
