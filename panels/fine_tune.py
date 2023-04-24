@@ -25,7 +25,7 @@ class FineTunePanel(ScreenPanel):
     speed = 100
 
     def initialize(self, panel_name):
-
+        self.set_fine_tuning(False)
         logging.debug("FineTunePanel")
 
         print_cfg = self._config.get_printer_config(self._screen.connected_printer)

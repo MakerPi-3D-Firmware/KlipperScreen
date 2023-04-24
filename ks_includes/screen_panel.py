@@ -8,6 +8,7 @@ from ks_includes.KlippyGcodes import KlippyGcodes
 
 
 class ScreenPanel:
+    Fine_tuning_mark = False
 
     def __init__(self, screen, title, back=True):
         self.menu = None
@@ -21,8 +22,7 @@ class ScreenPanel:
         self.control = {}
         self.title = title
         self.devices = {}
-        self.active_heaters = []
-        self.Fine_tuning_mark = False
+        self.active_heaters = []       
 
         self.layout = Gtk.Layout()
         self.layout.set_size(self._screen.width, self._screen.height)
@@ -37,10 +37,10 @@ class ScreenPanel:
         return
 
     def get_fine_tuning(self):
-        return self.Fine_tuning_mark
+        return ScreenPanel.Fine_tuning_mark
 
     def set_fine_tuning(self, title):
-        self.Fine_tuning_mark = title
+        ScreenPanel.Fine_tuning_mark = title
 
     def emergency_stop(self, widget):
 
