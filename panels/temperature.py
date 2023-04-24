@@ -379,7 +379,7 @@ class TemperaturePanel(ScreenPanel):
         self.labels['devices'].set_vexpand(False)
 
         name = Gtk.Label("")
-        temp = Gtk.Label(_("Temp (掳C)"))
+        temp = Gtk.Label(_("Temp (°C)"))
         temp.set_size_request(round(self._gtk.get_font_size() * 7.7), -1)
 
         self.labels['devices'].attach(name, 0, 0, 1, 1)
