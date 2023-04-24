@@ -130,7 +130,7 @@ class TemperaturePanel(ScreenPanel):
         self.labels[f"deg{self.tempdelta}"].set_active(True)
 
         vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        vbox.pack_start(Gtk.Label(_("Temperature") + " (掳C)"), False, False, 8)
+        vbox.pack_start(Gtk.Label(_("Temperature") + " (°C)"), False, False, 8)
         vbox.pack_end(tempgrid, True, True, 2)
 
         vsize = 2 if self._screen.vertical_mode else 3
